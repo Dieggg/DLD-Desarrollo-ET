@@ -1,0 +1,34 @@
+
+
+{% extends 'compras/base.html' %} {% load static %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <h3>Listado de Productos</h3><br>
+    <a href="{% url 'create_productos' %}" class="btn btn-warning"><span class="fa fa-plus-circle"></span> Nueva Producto</a>
+                <table class="table"> 
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Costo Presupuestado</th>
+                                <th scope="col">Costo Real</th>
+                                <th scope="col">Tienda</th>
+                                <th scope="col">Notas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in obj %}
+                            <tr>
+                                <th scope="row">{{ item.id}}</th>
+                                <td>{{item.nombre}}</td>
+                                <td>${{item.costo_presupuestado}}</td>
+                                <td>${{item.costo_real}}</td>
+                                <td>{{item.tienda}}</td>
+                                <td>{{item.notas}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+    {% endif %}
+{% endblock %}

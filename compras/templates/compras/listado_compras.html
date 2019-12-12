@@ -1,0 +1,44 @@
+
+
+{% extends 'compras/base.html' %} {% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <h3>Listado de Compras</h3>
+    <a href="{% url 'create_compra' %}" class="btn btn-warning"><span class="fa fa-plus-circle"></span> Nueva Compra</a>
+                <table class="table"> 
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Costo Real Producto</th>
+                                <th scope="col">Comprado</th>
+                                <th scope="col">Editar Costo real</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in obj %}
+                            <tr>
+                                <th scope="row">{{ item.id}}</th>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.producto}}</td>
+                                <td>${{item.producto.costo_real}}</td>
+                                <td>{% if  item.comprado  == 1  %}
+                                        Comprado
+                                    {% else %}
+                                        No ha sido comprado  
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'edit_productos' item.id %}" class="btn btn-warning btn-circle">Editar costo</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+    {% else %}
+    <div class="main_section">
+            <h1>Debe iniciar sesión</h1>
+    </div>
+    {% endif %}
+{% endblock %}

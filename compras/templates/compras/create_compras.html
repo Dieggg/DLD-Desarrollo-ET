@@ -1,0 +1,42 @@
+{% extends 'compras/base.html' %} {% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Nombre de la Venta</label>
+                        {{ form.nombre }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Producto</label>
+                        {{form.producto}}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Costo Real(editar)</label>
+                        {{ form.producto.costo_real }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Estado-Producto</label>
+                    {{form.comprado}}
+                    </div>
+            </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'listado' %}" class="btn btn-success">Cancelar</a>
+</form>
+{% else %}
+<div class="main_section">
+        <h1>Debe iniciar sesión</h1>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'compras/base.html' %} {% load static %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <h3>Listado de Tiendas</h3><br>
+    <a href="{% url 'create_tiendas' %}" class="btn btn-warning"><span class="fa fa-plus-circle"></span> Nueva Tienda</a><br><br>
+                <table class="table"> 
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Sucursal</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Región</th>
+                                <th scope="col">Estado de Aprobación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in obj %}
+                            <tr>
+                                <th scope="row">{{ item.id}}</th>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.sucursal}}</td>
+                                <td>{{item.direccion}}</td>
+                                <td>{{item.ciudad}}</td>
+                                <td>{{item.region}}</td>
+                                <td>{{item.estado}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+    {% endif %}
+{% endblock %}

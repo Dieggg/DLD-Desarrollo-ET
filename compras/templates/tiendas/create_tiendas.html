@@ -1,0 +1,49 @@
+{% extends 'compras/base.html' %} {% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<strong>Creación de tiendas</strong>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Nombre</label>
+                        {{ form.nombre.errors }} 
+                        {{ form.nombre }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Sucursal</label>
+                        {{form.sucursal}}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Direccion</label>
+                        {{ form.direccion }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Ciudad</label>
+                        {{ form.ciudad }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Región</label>
+                        {{ form.region }}
+                    </div>
+            </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'tiendas' %}" class="btn btn-success">Cancelar</a>
+</form>
+{% else %}
+<div class="main_section">
+        <h1>Debe iniciar sesión</h1>
+</div>
+{% endif %}
+{% endblock %}

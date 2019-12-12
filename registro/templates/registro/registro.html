@@ -1,0 +1,20 @@
+{% extends 'compras/base.html' %} {% load static %}
+
+{% block title %} Creción de cuentas de usuarios {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="form-login">
+    <div class="form-login-son">
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success btn-block">Crear</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

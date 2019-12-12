@@ -1,0 +1,48 @@
+{% extends 'compras/base.html' %} {% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+            Edición de productos
+            <div class="row">
+                        <div class="col-12">
+                            <label for="exampleFormControlTextarea1">Nombre</label>
+                            {{ form.nombre }}
+                        </div>
+                </div>
+            <div class="row">
+                        <div class="col-12">
+                            <label for="exampleFormControlTextarea1">Costo Proyecto</label>
+                            {{ form.costo_presupuestado }}
+                        </div>
+                </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Costo Real</label>
+                        {{ form.costo_real }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1">Tienda</label>
+                        {{ form.tienda }}
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12" >
+                        <label for="exampleFormControlTextarea1">Notas</label>
+                        {{form.notas}}
+                    </div>
+            </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'tiendas' %}" class="btn btn-success">Cancelar</a>
+</form>
+{% else %}
+<div class="main_section">
+        <h1>Debe iniciar sesión</h1>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+<form method="POST">
+        <div>
+            Eliminar
+        </div>
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="alert alert-success">
+                ¿Eliminar {{ obj.descripcion }}
+            </div>
+            <button type="submit" class="btn btn-primary">Sí, eliminar</button>
+            <a href="{% url 'productos' %}" class="btn btn-success">Cancelar</a>
+        </div>
+    </form>

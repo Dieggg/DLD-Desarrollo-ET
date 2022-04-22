@@ -9,7 +9,7 @@ verify_ssl = true
 django-allauth = "==0.40.0"
 django-crispy-forms = "==1.8.1"
 django-progressive-web-app = "==0.1.1"
-Django = "==2.2"
+Django = "==2.2.28"
 Pillow = "==6.2.1"
 
 [requires]
